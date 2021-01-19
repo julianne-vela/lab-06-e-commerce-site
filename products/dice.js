@@ -129,4 +129,4 @@ export const productsArr = [
     },
 ];
 
-console.log(productsArr);
+
