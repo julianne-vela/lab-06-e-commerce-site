@@ -1,7 +1,7 @@
 export const productsArr = [
     {
         id: 1,
-        name: 'RPG Set - Purple Moonstone',
+        name: 'Polymer Set - Purple Moonstone',
         image: 'p-dice-purple.jpg',
         description: 'A set of 7 Polymer RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
         category: 'polymer-dice',
@@ -9,7 +9,7 @@ export const productsArr = [
     },
     {
         id: 2,
-        name: 'RPG Set - Pride',
+        name: 'Polymer Set - Pride',
         image: 'p-dice-pride.png',
         description: 'A special Pride edition set of 7 RPG dice including a d3, d4, d6, d8, d10, d12 and d20. Proceeds go to support LGBTQ+ advocacy groups!',
         category: 'polymer-dice',
@@ -17,7 +17,7 @@ export const productsArr = [
     },
     {
         id: 3,
-        name: 'RPG Set - Andromeda Galaxy',
+        name: 'Polymer Set - Andromeda Galaxy',
         image: 'p-dice-galaxy.jpg',
         description: 'A set of 7 Polymer RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
         category: 'polymer-dice',
@@ -25,7 +25,7 @@ export const productsArr = [
     },
     {
         id: 4,
-        name: 'RPG Set - Crimson Embers',
+        name: 'Polymer Set - Crimson Embers',
         image: 'p-dice-crimson.png',
         description: 'A set of 7 Polymer RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
         category: 'polymer-dice',
@@ -33,7 +33,7 @@ export const productsArr = [
     },
     {
         id: 5,
-        name: 'RPG Set - Antique Bone',
+        name: 'Polymer Set - Antique Bone',
         image: 'p-dice-bone.png',
         description: 'A set of 7 Polymer RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
         category: 'polymer-dice',
@@ -41,7 +41,7 @@ export const productsArr = [
     },
     {
         id: 6,
-        name: 'RPG Set - Golden Aqua',
+        name: 'Metal Set - Golden Aqua',
         image: 'm-dice-aqua.jpg',
         description: 'A set of 7 Metal RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
         category: 'metal-dice',
@@ -49,7 +49,7 @@ export const productsArr = [
     },
     {
         id: 7,
-        name: 'RPG Set - Sinister Emerald',
+        name: 'Metal Set - Sinister Emerald',
         image: 'm-dice-emerald.jpg',
         description: 'A set of 7 Metal RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
         category: 'metal-dice',
@@ -57,7 +57,7 @@ export const productsArr = [
     },
     {
         id: 8,
-        name: 'RPG Set - Deadly Nightshade',
+        name: 'Metal Set - Deadly Nightshade',
         image: 'm-dice-nightshade.jpg',
         description: 'A set of 7 Metal RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
         category: 'metal-dice',
@@ -65,7 +65,7 @@ export const productsArr = [
     },
     {
         id: 9,
-        name: 'RPG Set - Ominous Nightfall',
+        name: 'Metal Set - Ominous Nightfall',
         image: 'm-dice-nightfall.jpg',
         description: 'A set of 7 Metal RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
         category: 'metal-dice',
@@ -73,7 +73,7 @@ export const productsArr = [
     },
     {
         id: 10,
-        name: 'RPG Set - Rising Phoenix',
+        name: 'Metal Set - Rising Phoenix',
         image: 'm-dice-phoenix.jpg',
         description: 'A set of 7 Metal RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
         category: 'metal-dice',
