@@ -1,0 +1,80 @@
+*{
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    
+    /* SCSS HSL */
+    --color1:hsla(59, 100%, 87%, 1);
+    --color2: hsla(43, 90%, 68%, 1);
+    --color3: hsla(358, 85%, 31%, 1);
+    --color4: hsla(0, 100%, 8%, 1);
+    --color5: hsla(0, 0%, 1%, 1);
+    
+    --header-height: 80px;
+    --shadow: 0px 10px 20px -12px rgba(0,0,0,0.45);
+    --gutter: 30px;
+    --footer-height: 25px;
+    
+    font-family: 'Texturina', serif;
+    
+    background-color: var(--color1);
+    color: var(--color5);
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-weight: 900;
+    background-color: var(--color5);
+    color: var(--color3);
+    height: var(--header-height);
+    box-shadow: var(--shadow);
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: var(--gutter);
+    padding-bottom: var(--gutter);
+    margin-top: var(--gutter);
+    margin-bottom: var(--gutter);
+    border: solid 2px var(--color4);
+    background-color: var(--color2);
+    width: 80%;
+}
+
+footer {
+    display: flex;
+    justify-content: flex-end;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    height: var(--footer-height);
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 3px;
+    background-color: var(--color5);
+    color: var(--color3);
+    box-shadow: var(--shadow);
+}
+
+table {
+    border: 1px solid var(--color5);
+    border-radius: 5px;
+    width: 80%;
+}
+
+th {
+    font-size: 1.5rem;
+    text-align: center;
+}

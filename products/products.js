@@ -1,5 +1,5 @@
-import { productsArr } from './data.js';
-import { renderProduct } from './render-function.js';
+import { productsArr } from '../data/product-data.js';
+import { renderProduct } from '../utils.js';
 
 const list = document.getElementById('product-list');
 

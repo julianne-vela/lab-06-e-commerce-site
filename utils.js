@@ -1,4 +1,5 @@
-/*
+export function renderProduct(product) {
+    /*
 Product has:
     id
     name,
@@ -7,8 +8,6 @@ Product has:
     category,
     price
 */
-
-export function renderProduct(product) {
     const li = document.createElement('li');
     li.classList.add('item');
 
@@ -41,3 +40,14 @@ export function renderProduct(product) {
 
     return li;
 }
+
+export function findById(id, array) {
+    // iterate through the array
+    for (let item of array) {
+        // compare our ID to the ID of the item
+        if (item.id === id) {
+            // If they match, return that item
+            return item;
+        }
+    }
+} 

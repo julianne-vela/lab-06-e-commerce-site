@@ -9,27 +9,34 @@
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="stylesheet" href="../styles/main.css">
     <link rel="stylesheet" href="../styles/products.css">
+    <link rel="stylesheet" href="../styles/cart.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Texturina&display=swap" rel="stylesheet">
-    <title>Products | D & Dice</title>
+    <title>Shopping Cart - D & Dice</title>
 </head>
 
 <body>
     <header>
-        D & Dice | Products
+        D & Dice | Shopping Cart
     </header>
     <main>
         <section>
-            <ul id="product-list">
-
-            </ul>
+            <table>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+            </table>
+            <a href="../products/index.html">Continue Shopping</a>
         </section>
+        <button id="place-order">Place Order</button>
     </main>
     <footer>
         <div class="copy gutter-right">About the Dev</div>
     </footer>
 
-    <script type="module" src="./products.js"></script>
+    <script type="module" src="./shopping-cart.js"></script>
 </body>
 
 </html>
