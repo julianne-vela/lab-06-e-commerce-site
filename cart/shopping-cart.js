@@ -6,7 +6,7 @@ import {
     findById,
 } from '../utils.js';
 
-const table = document.querySelector('table');
+const table = document.querySelector('tbody');
 
 for (let item of cart) {
     const product = findById(item.id, productsArr);
