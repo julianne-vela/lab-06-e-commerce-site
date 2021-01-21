@@ -56,8 +56,8 @@ section {
     padding-bottom: var(--gutter);
     margin-top: var(--gutter);
     margin-bottom: var(--gutter);
-    border: solid 2px var(--color1);
-    background-color: var(--color4);
+    border: solid 2px var(--color4);
+    background-color: var(--color2);
     width: 80%;
 }
 
@@ -83,3 +83,4 @@ button {
     font-size: 1rem;
     font-family: 'Texturina', serif;
 }
+
