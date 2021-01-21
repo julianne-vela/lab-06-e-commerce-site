@@ -109,6 +109,10 @@ button {
     margin-top: 20px;
 }
 
+.hidden {
+    display: none;
+}
+
 #product-list {
     display: flex;
     flex-wrap: wrap;
@@ -128,6 +132,3 @@ button {
     padding: 15px;
 }
 
-.hidden {
-    display: none;
-}
