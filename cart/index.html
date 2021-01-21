@@ -22,11 +22,23 @@
     <main>
         <section>
             <table>
-                <tr>
-                    <th>Product</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- return results from getCart function -->
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="3">Order Total: </th>
+                        <th id="order-total"></th>
+                    </tr>
+                </tfoot>
             </table>
             <a href="../products/index.html">Continue Shopping</a>
         </section>

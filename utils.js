@@ -1,13 +1,9 @@
+// import { cart } from '../data/cart-data.js';
+// localStorage.setItem('cart', JSON.stringify(cart));
+
+import { addToCart } from './cart-utils.js';
+
 export function renderProduct(product) {
-    /*
-Product has:
-    id
-    name,
-    image,
-    description,
-    category,
-    price
-*/
     const li = document.createElement('li');
     li.classList.add('item');
 
@@ -35,9 +31,11 @@ Product has:
     const button = document.createElement('button');
     button.value = product.id;
     button.textContent = 'Add to cart';
+    button.addEventListener('click', () => {
+        addToCart(product.id);
+        button.textContent = 'Added';
+    });
     li.append(button);
-
-
     return li;
 }
 
@@ -54,7 +52,6 @@ export function findById(id, array) {
 
 export function calcItemTotal(cartItem, product) {
     return cartItem.quantity * product.price;
-
 }
 
 export function calcOrderTotal(cart, productsArr) {

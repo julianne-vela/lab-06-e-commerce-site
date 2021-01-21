@@ -9,4 +9,4 @@ for (let product of productsArr) {
     list.append(productElement);
 }
 
-// set event listeners to update state and DOM
+// event listener is within renderProduct function
