@@ -57,6 +57,19 @@ export function calcItemTotal(cartItem, product) {
 
 }
 
+export function calcOrderTotal(cart, productsArr) {
+    let total = 0;
+
+    for (let item of cart) {
+        const matchingProduct = findById(item.id, productsArr);
+        const lineTotal = calcItemTotal(item, matchingProduct);
+
+        total = total + lineTotal;
+    }
+
+    return Math.round(total * 100) / 100;
+}
+
 export function renderLineItems(cartItem, product) {
     const quantity = cartItem.quantity;
 
