@@ -1,1 +1,1 @@
-import './dice.test.js';
+import './dndice.test.js';

@@ -50,4 +50,30 @@ export function findById(id, array) {
             return item;
         }
     }
-} 
+}
+
+export function calcItemTotal(cartItem, product) {
+    return cartItem.quantity * product.price;
+
+}
+
+export function renderLineItems(cartItem, product) {
+    const quantity = cartItem.quantity;
+
+    const tr = document.createElement('tr');
+    tr.classList.add('cart-item');
+
+    const nameTd = document.createElement('td');
+    const quantityTd = document.createElement('td');
+    const priceTd = document.createElement('td');
+
+    nameTd.textContent = product.name;
+    quantityTd.textContent = quantity;
+    priceTd.textContent = `$${calcItemTotal(cartItem, product).toFixed(2)}`;
+
+    tr.append(nameTd, quantityTd, priceTd);
+
+    return tr;
+}
+
+
