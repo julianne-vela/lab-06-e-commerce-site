@@ -1,18 +1,4 @@
 import { addToCart } from './cart-utils.js';
-const checkoutButton = document.querySelector('.checkout');
-const homeButton = document.querySelector('.home');
-const productsButton = document.querySelector('.products');
-
-// EVENT HANDLERS //
-checkoutButton.addEventListener('click', () => {
-    location.href = '../cart/index.html';
-});
-homeButton.addEventListener('click', () => {
-    location.href = '../index.html';
-});
-productsButton.addEventListener('click', () => {
-    location.href = '../products/index.html';
-});
 
 // FUNCTIONS //
 export function renderProduct(product) {

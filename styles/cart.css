@@ -44,13 +44,11 @@ section {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: var(--gutter);
-    padding-bottom: var(--gutter);
-    margin-top: var(--gutter);
-    margin-bottom: var(--gutter);
     border: solid 2px var(--color4);
     background-color: var(--color2);
-    width: 80%;
+    width: 640px;
+    padding: 30px 0 30px 0;
+    margin-bottom: 10px;
 }
 
 footer {
