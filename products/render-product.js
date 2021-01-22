@@ -1,7 +1,7 @@
-import { addToCart } from './cart-utils.js';
+import { findById } from '../common/utils.js';
+import { getCart } from '../common/api.js';
 
-// FUNCTIONS //
-export function renderProduct(product) {
+function renderProduct(product) {
     const li = document.createElement('li');
     li.classList.add('item');
 
@@ -59,58 +59,35 @@ export function renderProduct(product) {
 
 }
 
-export function findById(id, array) {
-    // iterate through the array
-    for (let item of array) {
-        // compare our ID to the ID of the item
-        if (item.id === id) {
-            // If they match, return that item
-            return item;
-        }
+function setCart(cart) {
+    localStorage.setItem('CART', JSON.stringify(cart));
+}
+
+function addToCart(id, selectedQuantity) {
+    // Get cart from localStorage
+    const cart = getCart();
+    // Check if an item with this id is already in the cart.
+    const itemInCart = findById(id, cart);
+    const addQuantity = selectedQuantity;
+
+    if (!itemInCart) {
+        // if not, initialize one. 
+        const initializedCartItem = {
+            id: id,
+            quantity: addQuantity,
+        };
+
+        cart.push(initializedCartItem);
+        console.log(initializedCartItem);
+    } else {
+        // if so -- increment the quantity
+        itemInCart.quantity += addQuantity;
     }
+
+    setCart(cart);
+
 }
 
-export function calcItemTotal(cartItem, product) {
-    return cartItem.quantity * product.price;
-}
-let orderTotal = 0;
-export function calcOrderTotal(cart, productsArr) {
 
-    for (let item of cart) {
-        const matchingProduct = findById(item.id, productsArr);
-        const lineTotal = calcItemTotal(item, matchingProduct);
 
-        orderTotal = orderTotal + lineTotal;
-    }
-
-    return orderTotal;
-}
-
-export function renderLineItems(cartItem, product) {
-    const quantity = cartItem.quantity;
-
-    const tr = document.createElement('tr');
-    tr.classList.add('cart-item');
-
-    const nameTd = document.createElement('td');
-    const quantityTd = document.createElement('td');
-    const priceTd = document.createElement('td');
-    const totalTd = document.createElement('td');
-
-    nameTd.textContent = product.name;
-    quantityTd.textContent = quantity;
-    priceTd.textContent = toUSD(product.price);
-    totalTd.textContent = toUSD(calcItemTotal(cartItem, product));
-
-    tr.append(nameTd, quantityTd, priceTd, totalTd);
-
-    return tr;
-}
-
-export function toUSD(orderTotal) {
-    return new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD'
-    }).format(orderTotal);
-}
-
+export default renderProduct;

@@ -1,11 +1,12 @@
-import { clearCart, getCart } from '../cart-utils.js';
-import { productsArr } from '../data/product-data.js';
+import { clearCart, getCart } from '../common/api.js';
+import { rawProducts } from '../data/product-data.js';
 import {
-    renderLineItems,
     findById,
     calcOrderTotal,
     toUSD,
-} from '../utils.js';
+} from '../common/utils.js';
+
+import renderLineItems from './render-line-item.js';
 
 const table = document.querySelector('tbody');
 const placeOrderButton = document.querySelector('#place-order');
@@ -14,13 +15,13 @@ const orderTotalCell = document.querySelector('#order-total');
 const currentCart = getCart();
 
 for (let item of currentCart) {
-    const product = findById(item.id, productsArr);
+    const product = findById(item.id, rawProducts);
     const tableRowDOM = renderLineItems(item, product);
 
     table.append(tableRowDOM);
 }
 
-const orderTotal = calcOrderTotal(currentCart, productsArr);
+const orderTotal = calcOrderTotal(currentCart, rawProducts);
 orderTotalCell.textContent = toUSD(orderTotal);
 
 if (currentCart.length === 0) {
