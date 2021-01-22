@@ -25,6 +25,35 @@ export function renderProduct(product) {
     pPrice.textContent = `$${product.price}`;
     li.append(pPrice);
 
+    function addQuantitySelector() {
+        const quantitySelect = document.createElement('select');
+        quantitySelect.name = 'quantity';
+
+        const option1 = document.createElement('option');
+        option1.textContent = '1';
+        option1.value = '1';
+        const option2 = document.createElement('option');
+        option2.textContent = '2';
+        option2.value = '2';
+        const option3 = document.createElement('option');
+        option3.textContent = '3';
+        option3.value = '3';
+        const option4 = document.createElement('option');
+        option4.textContent = '4';
+        option4.value = '4';
+        const option5 = document.createElement('option');
+        option5.textContent = '5';
+        option5.value = '5';
+        quantitySelect.add(option1);
+        quantitySelect.add(option2);
+        quantitySelect.add(option3);
+        quantitySelect.add(option4);
+        quantitySelect.add(option5);
+        li.append(quantitySelect);
+    }
+
+    addQuantitySelector();
+
     const button = document.createElement('button');
     button.value = product.id;
     button.textContent = 'Add to cart';
@@ -34,6 +63,7 @@ export function renderProduct(product) {
     });
     li.append(button);
     return li;
+
 }
 
 export function findById(id, array) {
