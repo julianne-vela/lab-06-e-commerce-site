@@ -1,6 +1,3 @@
-// import { cart } from '../data/cart-data.js';
-// localStorage.setItem('cart', JSON.stringify(cart));
-
 import { addToCart } from './cart-utils.js';
 
 export function renderProduct(product) {
@@ -53,18 +50,17 @@ export function findById(id, array) {
 export function calcItemTotal(cartItem, product) {
     return cartItem.quantity * product.price;
 }
-
+let orderTotal = 0;
 export function calcOrderTotal(cart, productsArr) {
-    let total = 0;
 
     for (let item of cart) {
         const matchingProduct = findById(item.id, productsArr);
         const lineTotal = calcItemTotal(item, matchingProduct);
 
-        total = total + lineTotal;
+        orderTotal = orderTotal + lineTotal;
     }
 
-    return Math.round(total * 100) / 100;
+    return orderTotal;
 }
 
 export function renderLineItems(cartItem, product) {
@@ -76,14 +72,22 @@ export function renderLineItems(cartItem, product) {
     const nameTd = document.createElement('td');
     const quantityTd = document.createElement('td');
     const priceTd = document.createElement('td');
+    const totalTd = document.createElement('td');
 
     nameTd.textContent = product.name;
     quantityTd.textContent = quantity;
-    priceTd.textContent = `$${calcItemTotal(cartItem, product).toFixed(2)}`;
+    priceTd.textContent = toUSD(product.price);
+    totalTd.textContent = toUSD(calcItemTotal(cartItem, product));
 
-    tr.append(nameTd, quantityTd, priceTd);
+    tr.append(nameTd, quantityTd, priceTd, totalTd);
 
     return tr;
 }
 
+export function toUSD(orderTotal) {
+    return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    }).format(orderTotal);
+}
 
