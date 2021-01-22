@@ -25,23 +25,24 @@ export function clearCart() {
     localStorage.setItem(CART, JSON.stringify(emptyCart));
 }
 
-export function addToCart(id) {
+export function addToCart(id, selectedQuantity) {
     // Get cart from localStorage
     const cart = getCart();
-
     // Check if an item with this id is already in the cart.
     const itemInCart = findById(id, cart);
+    const addQuantity = selectedQuantity;
+
     if (!itemInCart) {
         // if not, initialize one. 
         const initializedCartItem = {
             id: id,
-            quantity: 1
+            quantity: addQuantity,
         };
 
         cart.push(initializedCartItem);
     } else {
         // if so -- increment the quantity
-        itemInCart.quantity++;
+        itemInCart.quantity += addQuantity;
     }
 
     setCart(cart);
