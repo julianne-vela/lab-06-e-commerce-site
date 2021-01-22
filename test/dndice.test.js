@@ -3,8 +3,154 @@ import {
     renderProduct,
     calcItemTotal,
     calcOrderTotal,
-    renderLineItems
+    renderLineItems,
+    toUSD
 } from '../utils.js';
+import {
+    getCart,
+    setCart,
+    clearCart
+} from '../cart-utils.js';
+const productsArr = [
+    {
+        id: 1,
+        name: 'Polymer Set - Purple Moonstone',
+        image: 'p-dice-purple.jpg',
+        description: 'A set of 7 Polymer RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
+        category: 'polymer-dice',
+        price: 9.95
+    },
+    {
+        id: 2,
+        name: 'Polymer Set - Pride',
+        image: 'p-dice-pride.png',
+        description: 'A special Pride edition set of 7 RPG dice including a d3, d4, d6, d8, d10, d12 and d20. Proceeds go to support LGBTQ+ advocacy groups!',
+        category: 'polymer-dice',
+        price: 6.95
+    },
+    {
+        id: 3,
+        name: 'Polymer Set - Andromeda Galaxy',
+        image: 'p-dice-galaxy.jpg',
+        description: 'A set of 7 Polymer RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
+        category: 'polymer-dice',
+        price: 9.95
+    },
+    {
+        id: 4,
+        name: 'Polymer Set - Crimson Embers',
+        image: 'p-dice-crimson.png',
+        description: 'A set of 7 Polymer RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
+        category: 'polymer-dice',
+        price: 9.95
+    },
+    {
+        id: 5,
+        name: 'Polymer Set - Antique Bone',
+        image: 'p-dice-bone.png',
+        description: 'A set of 7 Polymer RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
+        category: 'polymer-dice',
+        price: 9.95
+    },
+    {
+        id: 6,
+        name: 'Metal Set - Golden Aqua',
+        image: 'm-dice-aqua.jpg',
+        description: 'A set of 7 Metal RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
+        category: 'metal-dice',
+        price: 11.95
+    },
+    {
+        id: 7,
+        name: 'Metal Set - Sinister Emerald',
+        image: 'm-dice-emerald.jpg',
+        description: 'A set of 7 Metal RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
+        category: 'metal-dice',
+        price: 11.95
+    },
+    {
+        id: 8,
+        name: 'Metal Set - Deadly Nightshade',
+        image: 'm-dice-nightshade.jpg',
+        description: 'A set of 7 Metal RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
+        category: 'metal-dice',
+        price: 11.95
+    },
+    {
+        id: 9,
+        name: 'Metal Set - Ominous Nightfall',
+        image: 'm-dice-nightfall.jpg',
+        description: 'A set of 7 Metal RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
+        category: 'metal-dice',
+        price: 11.95
+    },
+    {
+        id: 10,
+        name: 'Metal Set - Rising Phoenix',
+        image: 'm-dice-phoenix.jpg',
+        description: 'A set of 7 Metal RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
+        category: 'metal-dice',
+        price: 11.95
+    },
+    {
+        id: 11,
+        name: 'Magnetic Dice Tray - Black',
+        image: 'mag-rect-tray-black.png',
+        description: 'A magnetic rectangular dice tray with a soft black felt lining.',
+        category: 'containers',
+        price: 14.95
+    },
+    {
+        id: 12,
+        name: 'Magnetic Dice Tray - Teal',
+        image: 'mag-rect-tray-teal.jpg',
+        description: 'A magnetic rectangular dice tray with a soft teal felt lining.',
+        category: 'containers',
+        price: 14.95
+    },
+    {
+        id: 13,
+        name: 'Magnetic Dice Tray - Green',
+        image: 'mag-rect-tray-green.png',
+        description: 'A magnetic rectangular dice tray with a soft green felt lining.',
+        category: 'containers',
+        price: 14.95
+    },
+    {
+        id: 14,
+        name: 'Hard Metal Case',
+        image: 'metal-case.jpg',
+        description: 'A hard metal dice case that is excellent for storing your dice on-the-go!',
+        category: 'containers',
+        price: 14.95
+    },
+    {
+        id: 15,
+        name: 'Medium Dice Bag',
+        image: 'med-bag.jpg',
+        description: 'A nice medium sized dice bag to hold all your lucky magic balls of fun!',
+        category: 'containers',
+        price: 14.95
+    },
+    {
+        id: 16,
+        name: 'Mystery Bag',
+        image: 'mystery-bag.jpg',
+        description: 'Oh, how I\'ve piqued your curiosity! Wait...you\'re not a cat, right?',
+        category: 'containers',
+        price: 14.95
+    },
+];
+const testCart = [
+    {
+        id: 1,
+        quantity: 2
+    },
+    {
+        id: 5,
+        quantity: 1
+    },
+];
 
 const test = QUnit.test;
 
@@ -26,137 +172,6 @@ test('Should return a complete product listing as an li when given a product', (
 });
 
 test('findById should take in 2 and the productsArr array and return the Polymer Set - Pride item', (expect) => {
-    const productsArr = [
-        {
-            id: 1,
-            name: 'Polymer Set - Purple Moonstone',
-            image: 'p-dice-purple.jpg',
-            description: 'A set of 7 Polymer RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
-            category: 'polymer-dice',
-            price: 9.95
-        },
-        {
-            id: 2,
-            name: 'Polymer Set - Pride',
-            image: 'p-dice-pride.png',
-            description: 'A special Pride edition set of 7 RPG dice including a d3, d4, d6, d8, d10, d12 and d20. Proceeds go to support LGBTQ+ advocacy groups!',
-            category: 'polymer-dice',
-            price: 6.95
-        },
-        {
-            id: 3,
-            name: 'Polymer Set - Andromeda Galaxy',
-            image: 'p-dice-galaxy.jpg',
-            description: 'A set of 7 Polymer RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
-            category: 'polymer-dice',
-            price: 9.95
-        },
-        {
-            id: 4,
-            name: 'Polymer Set - Crimson Embers',
-            image: 'p-dice-crimson.png',
-            description: 'A set of 7 Polymer RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
-            category: 'polymer-dice',
-            price: 9.95
-        },
-        {
-            id: 5,
-            name: 'Polymer Set - Antique Bone',
-            image: 'p-dice-bone.png',
-            description: 'A set of 7 Polymer RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
-            category: 'polymer-dice',
-            price: 9.95
-        },
-        {
-            id: 6,
-            name: 'Metal Set - Golden Aqua',
-            image: 'm-dice-aqua.jpg',
-            description: 'A set of 7 Metal RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
-            category: 'metal-dice',
-            price: 11.95
-        },
-        {
-            id: 7,
-            name: 'Metal Set - Sinister Emerald',
-            image: 'm-dice-emerald.jpg',
-            description: 'A set of 7 Metal RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
-            category: 'metal-dice',
-            price: 11.95
-        },
-        {
-            id: 8,
-            name: 'Metal Set - Deadly Nightshade',
-            image: 'm-dice-nightshade.jpg',
-            description: 'A set of 7 Metal RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
-            category: 'metal-dice',
-            price: 11.95
-        },
-        {
-            id: 9,
-            name: 'Metal Set - Ominous Nightfall',
-            image: 'm-dice-nightfall.jpg',
-            description: 'A set of 7 Metal RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
-            category: 'metal-dice',
-            price: 11.95
-        },
-        {
-            id: 10,
-            name: 'Metal Set - Rising Phoenix',
-            image: 'm-dice-phoenix.jpg',
-            description: 'A set of 7 Metal RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
-            category: 'metal-dice',
-            price: 11.95
-        },
-        {
-            id: 11,
-            name: 'Magnetic Dice Tray - Black',
-            image: 'mag-rect-tray-black.png',
-            description: 'A magnetic rectangular dice tray with a soft black felt lining.',
-            category: 'containers',
-            price: 14.95
-        },
-        {
-            id: 12,
-            name: 'Magnetic Dice Tray - Teal',
-            image: 'mag-rect-tray-teal.jpg',
-            description: 'A magnetic rectangular dice tray with a soft teal felt lining.',
-            category: 'containers',
-            price: 14.95
-        },
-        {
-            id: 13,
-            name: 'Magnetic Dice Tray - Green',
-            image: 'mag-rect-tray-green.png',
-            description: 'A magnetic rectangular dice tray with a soft green felt lining.',
-            category: 'containers',
-            price: 14.95
-        },
-        {
-            id: 14,
-            name: 'Hard Metal Case',
-            image: 'metal-case.jpg',
-            description: 'A hard metal dice case that is excellent for storing your dice on-the-go!',
-            category: 'containers',
-            price: 14.95
-        },
-        {
-            id: 15,
-            name: 'Medium Dice Bag',
-            image: 'med-bag.jpg',
-            description: 'A nice medium sized dice bag to hold all your lucky magic balls of fun!',
-            category: 'containers',
-            price: 14.95
-        },
-        {
-            id: 16,
-            name: 'Mystery Bag',
-            image: 'mystery-bag.jpg',
-            description: 'Oh, how I\'ve piqued your curiosity! Wait...you\'re not a cat, right?',
-            category: 'containers',
-            price: 14.95
-        },
-    ];
-
     const expected = {
         id: 2,
         name: 'Polymer Set - Pride',
@@ -207,7 +222,7 @@ test('Should return a table row containing the product name, quantity, and price
         quantity: 2,
     };
 
-    const expected = `<tr class="cart-item"><td>Polymer Set - Andromeda Galaxy</td><td>2</td><td>$19.90</td></tr>`;
+    const expected = `<tr class="cart-item"><td>Polymer Set - Andromeda Galaxy</td><td>2</td><td>$9.95</td><td>$19.90</td></tr>`;
 
     const actual = renderLineItems(cartItem, product);
 
@@ -233,140 +248,34 @@ test('Should return cart total ($83.65) when given the cart array and the produc
             quantity: 1,
         },
     ];
-    const productsArr = [
-        {
-            id: 1,
-            name: 'Polymer Set - Purple Moonstone',
-            image: 'p-dice-purple.jpg',
-            description: 'A set of 7 Polymer RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
-            category: 'polymer-dice',
-            price: 9.95
-        },
-        {
-            id: 2,
-            name: 'Polymer Set - Pride',
-            image: 'p-dice-pride.png',
-            description: 'A special Pride edition set of 7 RPG dice including a d3, d4, d6, d8, d10, d12 and d20. Proceeds go to support LGBTQ+ advocacy groups!',
-            category: 'polymer-dice',
-            price: 6.95
-        },
-        {
-            id: 3,
-            name: 'Polymer Set - Andromeda Galaxy',
-            image: 'p-dice-galaxy.jpg',
-            description: 'A set of 7 Polymer RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
-            category: 'polymer-dice',
-            price: 9.95
-        },
-        {
-            id: 4,
-            name: 'Polymer Set - Crimson Embers',
-            image: 'p-dice-crimson.png',
-            description: 'A set of 7 Polymer RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
-            category: 'polymer-dice',
-            price: 9.95
-        },
-        {
-            id: 5,
-            name: 'Polymer Set - Antique Bone',
-            image: 'p-dice-bone.png',
-            description: 'A set of 7 Polymer RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
-            category: 'polymer-dice',
-            price: 9.95
-        },
-        {
-            id: 6,
-            name: 'Metal Set - Golden Aqua',
-            image: 'm-dice-aqua.jpg',
-            description: 'A set of 7 Metal RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
-            category: 'metal-dice',
-            price: 11.95
-        },
-        {
-            id: 7,
-            name: 'Metal Set - Sinister Emerald',
-            image: 'm-dice-emerald.jpg',
-            description: 'A set of 7 Metal RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
-            category: 'metal-dice',
-            price: 11.95
-        },
-        {
-            id: 8,
-            name: 'Metal Set - Deadly Nightshade',
-            image: 'm-dice-nightshade.jpg',
-            description: 'A set of 7 Metal RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
-            category: 'metal-dice',
-            price: 11.95
-        },
-        {
-            id: 9,
-            name: 'Metal Set - Ominous Nightfall',
-            image: 'm-dice-nightfall.jpg',
-            description: 'A set of 7 Metal RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
-            category: 'metal-dice',
-            price: 11.95
-        },
-        {
-            id: 10,
-            name: 'Metal Set - Rising Phoenix',
-            image: 'm-dice-phoenix.jpg',
-            description: 'A set of 7 Metal RPG dice including a d3, d4, d6, d8, d10, d12 and d20.',
-            category: 'metal-dice',
-            price: 11.95
-        },
-        {
-            id: 11,
-            name: 'Magnetic Dice Tray - Black',
-            image: 'mag-rect-tray-black.png',
-            description: 'A magnetic rectangular dice tray with a soft black felt lining.',
-            category: 'containers',
-            price: 14.95
-        },
-        {
-            id: 12,
-            name: 'Magnetic Dice Tray - Teal',
-            image: 'mag-rect-tray-teal.jpg',
-            description: 'A magnetic rectangular dice tray with a soft teal felt lining.',
-            category: 'containers',
-            price: 14.95
-        },
-        {
-            id: 13,
-            name: 'Magnetic Dice Tray - Green',
-            image: 'mag-rect-tray-green.png',
-            description: 'A magnetic rectangular dice tray with a soft green felt lining.',
-            category: 'containers',
-            price: 14.95
-        },
-        {
-            id: 14,
-            name: 'Hard Metal Case',
-            image: 'metal-case.jpg',
-            description: 'A hard metal dice case that is excellent for storing your dice on-the-go!',
-            category: 'containers',
-            price: 14.95
-        },
-        {
-            id: 15,
-            name: 'Medium Dice Bag',
-            image: 'med-bag.jpg',
-            description: 'A nice medium sized dice bag to hold all your lucky magic balls of fun!',
-            category: 'containers',
-            price: 14.95
-        },
-        {
-            id: 16,
-            name: 'Mystery Bag',
-            image: 'mystery-bag.jpg',
-            description: 'Oh, how I\'ve piqued your curiosity! Wait...you\'re not a cat, right?',
-            category: 'containers',
-            price: 14.95
-        },
-    ];
 
-    const expected = 83.65;
+    const expected = toUSD(83.65);
 
-    const actual = calcOrderTotal(cart, productsArr);
+    const actual = toUSD(calcOrderTotal(cart, productsArr));
 
     expect.deepEqual(actual, expected);
+});
+
+test('getCart should get the correct cart from local storage', (expect) => {
+    localStorage.setItem('CART', JSON.stringify(testCart));
+
+    const cart = getCart();
+
+    expect.deepEqual(cart, testCart);
+});
+
+test('clearCart should replace the existing cart with a fresh, empty cart', (expect) => {
+    localStorage.setItem('CART', JSON.stringify('hi'));
+    clearCart();
+    const fullCart = getCart();
+    const emptyCart = [];
+
+    expect.deepEqual(fullCart, emptyCart);
+});
+
+test('setCart should upload the current cart to localStorage', (expect) => {
+    setCart(testCart);
+    const fullCart = getCart();
+
+    expect.deepEqual(testCart, fullCart);
 });
