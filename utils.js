@@ -66,7 +66,7 @@ export function renderProduct(product) {
     addButton.addEventListener('click', () => {
         const addQuantity = quantitySelect.value;
         addToCart(product.id, addQuantity);
-        addButton.textContent = 'Added';
+        addButton.textContent = `${addQuantity} added to cart`;
     });
     li.append(addButton);
     return li;
