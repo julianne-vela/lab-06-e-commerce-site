@@ -6,33 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Texturina&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="stylesheet" href="../styles/main.css">
     <link rel="stylesheet" href="../styles/products.css">
-    <title>Products | D & Dice</title>
+    <link rel="stylesheet" href="../styles/cart.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Texturina&display=swap" rel="stylesheet">
+    <title>Shopping Cart - D & Dice</title>
 </head>
 
 <body>
     <header>
-        D & Dice | Products
+        D & Dice | Shopping Cart
     </header>
     <main>
-        <button class="hidden">Go to Cart</button>
-        <a href="../cart/index.html">Go to Cart</a>
-        <a href="../index.html">Go back home</a>
         <section>
-            <ul id="product-list">
-
-            </ul>
+            <table>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+            </table>
+            <a href="../products/index.html">Continue Shopping</a>
         </section>
+        <button id="place-order">Place Order</button>
     </main>
     <footer>
         <div class="copy gutter-right">About the Dev</div>
     </footer>
 
-    <script type="module" src="./products.js"></script>
+    <script type="module" src="./shopping-cart.js"></script>
 </body>
 
 </html>
