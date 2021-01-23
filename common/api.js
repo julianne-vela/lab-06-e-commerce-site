@@ -34,18 +34,12 @@ export function setCart(cart) {
     localStorage.setItem('CART', JSON.stringify(cart));
 }
 export function addProduct(newProduct) {
-    // retrieve the existing products array
-    let existingInventory = localStorage.getItem('PRODUCTS');
-    const parsedInventory = JSON.parse(existingInventory);
-
-    // push the new product to the array
+    let parsedInventory = getInventory();
     parsedInventory.push(newProduct);
-
-    // seed the new array into local storage
-    const stringyInventory = JSON.stringify(existingInventory);
+    const stringyInventory = JSON.stringify(parsedInventory);
     localStorage.setItem('PRODUCTS', stringyInventory);
-
-    // window.location = '../products/index.html';
+    let finalInventory = getInventory();
+    return finalInventory;
 }
 
 
