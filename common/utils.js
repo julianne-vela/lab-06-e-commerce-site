@@ -14,6 +14,7 @@ export function findById(id, array) {
 export function calcItemTotal(cartItem, product) {
     return cartItem.quantity * product.price;
 }
+
 let orderTotal = 0;
 export function calcOrderTotal(cart, productsArr) {
 

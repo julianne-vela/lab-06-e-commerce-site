@@ -1,6 +1,7 @@
 import { findById } from '../common/utils.js';
 import { getCart } from '../common/api.js';
 
+
 function renderProduct(product) {
     const li = document.createElement('li');
     li.classList.add('item');
@@ -56,7 +57,6 @@ function renderProduct(product) {
     });
     li.append(addButton);
     return li;
-
 }
 
 function setCart(cart) {
@@ -68,7 +68,8 @@ function addToCart(id, selectedQuantity) {
     const cart = getCart();
     // Check if an item with this id is already in the cart.
     const itemInCart = findById(id, cart);
-    const addQuantity = selectedQuantity;
+
+    const addQuantity = Number(selectedQuantity);
 
     if (!itemInCart) {
         // if not, initialize one. 
@@ -78,7 +79,6 @@ function addToCart(id, selectedQuantity) {
         };
 
         cart.push(initializedCartItem);
-        console.log(initializedCartItem);
     } else {
         // if so -- increment the quantity
         itemInCart.quantity += addQuantity;
