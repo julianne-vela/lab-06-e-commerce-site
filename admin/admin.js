@@ -1,18 +1,6 @@
-// Form Submission //
-// pull data from form input fields
-// store data in newProduct object
-// call addProduct function with newProduct
-
 import { addProduct } from '../common/api.js';
 
-
-// Get a reference to the form
 const addProductForm = document.getElementById('add-new-product');
-
-// Subscribe to the submit event
-// Don't forget to call event.preventDefault()!
-// Create a new FormData object passing in the form
-// // Make a new product object from the formData (i.e. form.get)
 
 addProductForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -28,11 +16,7 @@ addProductForm.addEventListener('submit', (e) => {
     };
 
     addProduct(newProduct);
+
+    addProductForm.reset();
 });
 
-
-
-// Call your new store addProduct function with the object.
-// addProduct(data);
-
-// Reset the form
