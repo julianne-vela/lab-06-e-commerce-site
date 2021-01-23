@@ -16,8 +16,11 @@ function renderLineItems(cartItem, product) {
 
     nameTd.textContent = product.name;
     quantityTd.textContent = quantity;
+    quantityTd.classList.add = 'quantity';
     priceTd.textContent = toUSD(product.price);
+    priceTd.classList.add = 'price';
     totalTd.textContent = toUSD(calcItemTotal(cartItem, product));
+    totalTd.classList.add = 'total';
 
     tr.append(nameTd, quantityTd, priceTd, totalTd);
 
