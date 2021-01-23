@@ -1,6 +1,8 @@
 import { findById } from '../common/utils.js';
-import { getCart } from '../common/api.js';
-
+import {
+    getCart,
+    setCart
+} from '../common/api.js';
 
 function renderProduct(product) {
     const li = document.createElement('li');
@@ -59,10 +61,6 @@ function renderProduct(product) {
     return li;
 }
 
-function setCart(cart) {
-    localStorage.setItem('CART', JSON.stringify(cart));
-}
-
 function addToCart(id, selectedQuantity) {
     // Get cart from localStorage
     const cart = getCart();
@@ -87,7 +85,5 @@ function addToCart(id, selectedQuantity) {
     setCart(cart);
 
 }
-
-
 
 export default renderProduct;

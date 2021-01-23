@@ -1,16 +1,19 @@
 import {
     findById,
-    renderProduct,
     calcItemTotal,
     calcOrderTotal,
-    renderLineItems,
     toUSD
-} from '../utils.js';
+} from '../common/utils.js';
+
+import renderLineItems from '../cart/render-line-item.js';
+
+import renderProduct from '../products/render-product.js';
+
 import {
     getCart,
     setCart,
     clearCart
-} from '../cart-utils.js';
+} from '../common/api.js';
 const productsArr = [
     {
         id: 1,
@@ -164,7 +167,7 @@ test('Should return a complete product listing as an li when given a product', (
         price: 9.95
     };
 
-    const htmlStatic = `<li class="item"><h3 class="name">RPG Set - Purple Moonstone</h3><img class="product-image" src="../assets/pictures/p-dice-purple.jpg" alt="A photo of a purple and white RPG style dice set."><p class="description">A set of 7 Polymer RPG dice including a d3, d4, d6, d8, d10, d12 and d20.</p><p class="price">$9.95</p><button value="1">Add to cart</button></li>`;
+    const htmlStatic = `<li class="item"><h3 class="name">RPG Set - Purple Moonstone</h3><img class="product-image" src="../assets/pictures/p-dice-purple.jpg" alt="A photo of a purple and white RPG style dice set."><p class="description">A set of 7 Polymer RPG dice including a d3, d4, d6, d8, d10, d12 and d20.</p><p class="price">$9.95</p><select name="quantity"><option value="1">1</option><option value="2">2</option><option value="3">3</option></select><button value="1">Add to cart</button></li>`;
 
     const actual = renderProduct(purplePolyDice);
 
