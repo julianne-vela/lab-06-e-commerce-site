@@ -23,7 +23,7 @@ body {
     
     font-family: 'Texturina', serif;
     
-    background-color: var(--color1);
+    background-image: url(../assets/pictures/rpg-texture.png);
     color: var(--color5);
 }
 
@@ -37,6 +37,7 @@ header {
     color: var(--color3);
     height: var(--header-height);
     box-shadow: var(--shadow);
+    text-shadow: 2px 2px 5px var(--color2);
 }
 
 nav {
@@ -49,7 +50,7 @@ nav {
     margin-bottom: 10px;
 }
 
-nav > a {
+a {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -71,27 +72,6 @@ main {
     margin-bottom: var(--gutter);
 }
 
-.hero {
-    position: relative;
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.hero::after {
-    content: "";
-    background-image: url(../assets/pictures/rpg-texture.png);
-    background-size: cover;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    opacity: 0.1;
-}
-
 section {
     display: flex;
     flex-direction: column;
@@ -100,11 +80,9 @@ section {
     background-color: var(--color2);
     width: 700px;
     margin-bottom: 10px;
-    z-index: 2;
     box-shadow: 5px 5px 40px 5px var(--color3);
-    min-height: 50%;
+    min-height: 500px;
 }
-
 
 table {
     width: 100%;
@@ -112,7 +90,6 @@ table {
 }
 
 th {
-    position: sticky;
     top: 0;
     font-size: 1.8rem;
     text-align: left;
@@ -141,18 +118,16 @@ button {
     font-size: 1rem;
     font-family: 'Texturina', serif;
     border-radius: 10px;
-    z-index: 1;
 }
 
 footer {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     position: fixed;
     width: 100%;
     bottom: 0;
-    height: var(--footer-height);
-    display: flex;
-    justify-content: flex-end;
+    height: 40px;
     padding-right: 3px;
     background-color: var(--color5);
     color: var(--color3);
