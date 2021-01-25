@@ -23,19 +23,25 @@
         <a href="../cart/index.html">Checkout</a>
         <a href="./index.html">Admin</a>
     </nav>
-    <main class="hero">
+    <main>
         <section>
-            <fieldset id="add-new-product" action="">
-                <legend>
-                    Add New Product
-                </legend>
-                <input name="id">
-                <input name="name">
-                <input name="image">
-                <input name="description">
-                <input name="category">
-                <input name="price">
-                <input type="submit" value="Submit">
+            <fieldset>
+                <legend>Add New Product</legend>
+                <form id="add-new-product" action="">
+                    <input name="id" placeholder="Product ID">
+                    <input name="name" placeholder="Product Name">
+                    <input name="image" placeholder="Realative Path for Image">
+                    <input name="description" placeholder="Enter a Description">
+                    <select name="category">
+                        <option value="default">Please Select a Category</option>
+                        <option value="polymer-dice">Polymer Dice</option>
+                        <option value="metal-dice">Metal Dice</option>
+                        <option value="container">Container</option>
+                        <option value="mystery">Mystery Bags</option>
+                    </select>
+                    <input name="price" placeholder="Enter Price" type="number">
+                    <input type="submit" value="Submit">
+                </form>
             </fieldset>
         </section>
     </main>

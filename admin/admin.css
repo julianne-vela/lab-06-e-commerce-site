@@ -23,28 +23,8 @@ body {
     
     font-family: 'Texturina', serif;
     
+    background-color: var(--color1);
     color: var(--color5);
-}
-
-.hero {
-    position: relative;
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.hero::after {
-    content: "";
-    background-image: url(../assets/pictures/rpg-texture.png);
-    background-size: cover;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    opacity: 0.1;
 }
 
 header {
@@ -58,6 +38,7 @@ header {
     height: var(--header-height);
     box-shadow: var(--shadow);
 }
+
 
 nav {
     width: 100%;
@@ -91,20 +72,50 @@ main {
     margin-bottom: var(--gutter);
 }
 
-h2 {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 5px;
-    background-color: var(--color1);
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color4);
+    padding: 20px;
+    margin: 20px;
+    border: 2px double var(--color2);
     border-radius: 10px;
 }
 
-form {
+fieldset {
     z-index: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    width: 400px;
+    border: double 2px var(--color2);
+    padding: 5px;
+    font-family: 'Texturina', serif;
+    font-size: 1.5rem;
+    color: var(--color2);
+    border-radius: 5px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input, select {
+    font-family: 'Texturina', serif;
+    font-size: 1.3rem;
+    color: var(--color4);
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+input[type="submit"] {
+    background-color: var(--color2);
+    border-radius: 10px;
+    color: var(--color4);
+    width: 40%;
+    margin: auto;
 }
 
 footer {
