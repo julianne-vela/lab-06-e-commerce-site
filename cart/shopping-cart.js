@@ -1,31 +1,37 @@
-import { cart } from '../data/cart-data.js';
-import { productsArr } from '../data/product-data.js';
+import { clearCart, getCart } from '../common/api.js';
+import { rawProducts } from '../data/product-data.js';
 import {
-    renderLineItems,
     findById,
     calcOrderTotal,
-} from '../utils.js';
+    toUSD,
+} from '../common/utils.js';
 
-function renderTotalRow() {
-    const tr = document.createElement('tr');
-    const td1 = document.createElement('td');
-    const td2 = document.createElement('td');
-    const td3 = document.createElement('td');
-    td2.textContent = 'Order Total';
-    td3.textContent = `$${calcOrderTotal(cart, productsArr)}`;
-    tr.append(td1, td2, td3);
-    table.append(tr);
-}
+import renderLineItems from './render-line-item.js';
 
 const table = document.querySelector('tbody');
+const placeOrderButton = document.querySelector('#place-order');
+const orderTotalCell = document.querySelector('#order-total');
 
-for (let item of cart) {
-    const product = findById(item.id, productsArr);
+const currentCart = getCart();
+
+for (let item of currentCart) {
+    const product = findById(item.id, rawProducts);
     const tableRowDOM = renderLineItems(item, product);
 
     table.append(tableRowDOM);
 }
 
-renderTotalRow();
+const orderTotal = calcOrderTotal(currentCart, rawProducts);
+orderTotalCell.textContent = toUSD(orderTotal);
+
+if (currentCart.length === 0) {
+    placeOrderButton.disabled = true;
+} else {
+    placeOrderButton.addEventListener('click', () => {
+        clearCart();
+        alert(JSON.stringify(currentCart, true, 2));
+        location.href = '../index.html';
+    });
+}
 
 

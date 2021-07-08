@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Texturina&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles/reset.css">
-    <link rel="stylesheet" href="./styles/products.css">
-    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./common/main.css">
     <title>D & Dice</title>
 </head>
 
@@ -16,18 +17,21 @@
     <header>
         D & Dice
     </header>
-    <main>
+    <nav>
+        <a href='./index.html'>Home</a>
+        <a href='./products/index.html'>Products</a>
+        <a href="./cart/index.html">Checkout</a>
+        <a href="./admin/index.html">Admin</a>
+    </nav>
+    <main class="hero">
         <section class="main-section">
-            <p>
-                Welcome to the D & Dice Shop!
-            </p>
-            <a href="./products/index.html">View our Products</a>
+            <h1>Welcome to the D & Dice Shop</h1>
         </section>
+        <a href="./products/index.html" class="products2">Check out our epic products</a>
     </main>
     <footer>
-        <div class="copy gutter-right">About the Dev</div>
+        <div class="copy gutter-right"><a href="./admin/about-me.html">About the Dev</a></div>
     </footer>
-
 </body>
 
 </html>

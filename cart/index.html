@@ -6,12 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles/reset.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <link rel="stylesheet" href="../styles/products.css">
-    <link rel="stylesheet" href="../styles/cart.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Texturina&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="./cart.css">
     <title>Shopping Cart - D & Dice</title>
 </head>
 
@@ -19,24 +17,45 @@
     <header>
         D & Dice | Shopping Cart
     </header>
-    <main>
+    <nav>
+        <a href='../index.html'>Home</a>
+        <a href='../products/index.html'>Products</a>
+        <a href="./index.html">Checkout</a>
+        <a href="../admin/index.html">Admin</a>
+    </nav>
+    <main class="hero">
         <section>
             <table>
-                <tr>
-                    <th>Product</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- return results from getCart function -->
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td class="hidden"></td>
+                        <td class="total">Order Total: </td>
+                        <td class="total" id="order-total"></td>
+                        <td>
+                            <button id="place-order">Place Order</button>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
-            <a href="../products/index.html">Continue Shopping</a>
         </section>
-        <button id="place-order">Place Order</button>
     </main>
     <footer>
-        <div class="copy gutter-right">About the Dev</div>
+        <div class="copy gutter-right"><a href="../admin/about-me.html">About the Dev</a></div>
     </footer>
 
     <script type="module" src="./shopping-cart.js"></script>
+    <script type="module" src="../common/utils.js"></script>
 </body>
 
 </html>

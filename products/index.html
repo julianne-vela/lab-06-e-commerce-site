@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Texturina&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles/reset.css">
-    <link rel="stylesheet" href="../styles/main.css">
     <link rel="stylesheet" href="../styles/products.css">
     <title>Products | D & Dice</title>
 </head>
@@ -18,10 +17,13 @@
     <header>
         D & Dice | Products
     </header>
+    <nav>
+        <a href='../index.html'>Home</a>
+        <a href='./index.html'>Products</a>
+        <a href="../cart/index.html">Checkout</a>
+        <a href="../admin/index.html">Admin</a>
+    </nav>
     <main>
-        <button class="hidden">Go to Cart</button>
-        <a href="../cart/index.html">Go to Cart</a>
-        <a href="../index.html">Go back home</a>
         <section>
             <ul id="product-list">
 
@@ -29,10 +31,11 @@
         </section>
     </main>
     <footer>
-        <div class="copy gutter-right">About the Dev</div>
+        <div class="copy gutter-right"><a href="../admin/about-me.html">About the Dev</a></div>
     </footer>
 
     <script type="module" src="./products.js"></script>
+    <script type="module" src="../common/utils.js"></script>
 </body>
 
 </html>
